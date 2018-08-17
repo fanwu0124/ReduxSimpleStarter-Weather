@@ -9,9 +9,13 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 export function fetchWeather(city) {
   const url = `${ROOT_URL}&q=${city},us`;
   const request = axios.get(url); //axios is a library for ajax calls.
+  //request is a promise returned from ajax call.
+  console.log('Request:', request);
 
   return {
     type: FETCH_WEATHER,
     payload: request
+    //If request is a promise, stop the action. Create a new action after the promise
+    //is resolved, and send the action to reducer.
   };
 }
